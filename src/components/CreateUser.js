@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreateUser() {
+const navigate = useNavigate();
+
   const [values, setValues] = useState({});
 
   const handleChange = (event) => {
@@ -11,7 +15,16 @@ function CreateUser() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(values);
+
+    axios
+      .post(process.env.REACT_APP_API_POST_URL, values)
+      .then((response) => {
+        console.log(response.data);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
