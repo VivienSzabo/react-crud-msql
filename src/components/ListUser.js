@@ -11,7 +11,7 @@ function ListUser() {
 
   function getUsers() {
     axios
-      .get(process.env.REACT_APP_API_POST_URL)
+      .get(process.env.REACT_APP_API_GET_URL)
       .then((response) => {
         console.log(response.data);
         setUsers(response.data);
