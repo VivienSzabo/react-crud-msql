@@ -23,6 +23,22 @@ function ListUser() {
       });
   }
 
+  function deleteUser(id) {
+    axios
+      .delete(`${apiUrl}/user/${id}/delete`)
+      .then((response) => {
+        console.log(response.data);
+        getUsers();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+
+
+
+
   return (
     <div>
       <table>
@@ -46,7 +62,7 @@ function ListUser() {
                 <td>{user.mobile}</td>
                 <td>
                   <Link to={`user/${user.id}/edit`} style={{marginRight:"10px"}}>Edit</Link>
-                  <button>Delete</button>
+                  <button onClick={() => deleteUser(user.id)}>Delete</button>
                 </td>
               </tr>
             ))
