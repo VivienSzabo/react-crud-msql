@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import apiUrl from '../api';
+
 
 function ListUser() {
   const [users, setUsers] = useState([]);
@@ -11,7 +13,7 @@ function ListUser() {
 
   function getUsers() {
     axios
-      .get(process.env.REACT_APP_API_GET_URL)
+      .get(apiUrl+'/user')
       .then((response) => {
         console.log(response.data);
         setUsers(response.data);

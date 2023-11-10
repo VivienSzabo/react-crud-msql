@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import apiUrl from '../api';
 
-function CreateUser() {
+function CreateUser() { 
 const navigate = useNavigate();
 
   const [values, setValues] = useState({});
@@ -17,7 +18,7 @@ const navigate = useNavigate();
     event.preventDefault();
 
     axios
-      .post(process.env.REACT_APP_API_POST_URL, values)
+      .post(apiUrl+'/user/save', values)
       .then((response) => {
         console.log(response.data);
         navigate('/');
